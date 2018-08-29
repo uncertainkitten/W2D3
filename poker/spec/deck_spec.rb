@@ -1,11 +1,15 @@
 require 'deck.rb'
 
 RSpec.describe "Deck class for poker" do
-  subject(:deck) {Deck.new}
+  subject(:deck) {Deck.create}
   
   describe "Deck#initialize" do
     it "should have 52 cards" do
       expect(deck.cards.length).to eq(52)
+    end
+    
+    it "has a 'dealt cards' instance variable" do
+      expect(deck.dealt).to eq([])
     end
   end
   
@@ -17,16 +21,19 @@ RSpec.describe "Deck class for poker" do
   end
   
   describe "Deck#deal_card" do
-   let(:player) {double('player')}
-   let(:card) {deal_card(player)}
+   let(:card) {deck.deal_card}
+   
    it 'Returns a card' do
       expect(card.class).to be (Card) 
     end 
+    
     it 'Removes card from deck' do 
-      expect (deck.cards).to_not include(card)
+      expect(deck.cards).not_to include(card)
     end
+    
     it 'Adds card to dealt cards' do 
       expect(deck.dealt).to include(card)
     end
+    
   end
 end
