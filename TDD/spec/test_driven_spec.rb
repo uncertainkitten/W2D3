@@ -43,3 +43,37 @@ RSpec.describe "test driven" do
     end
   end
 end
+
+
+RSpec.describe 'Towers of Hanoi' do
+  subject(:hanoi) {TowersOfHanoi.new}
+  describe 'Hanoi#initialize' do 
+    it 'Starts with 3 towers' do
+      expect(hanoi.towers.length).to eq(3)  
+    end
+    it 'Tower 0 has 3 disks' do
+      expect(hanoi.towers[0]).to eq([3,2,1])
+    end
+  end
+  
+  describe 'Hanoi#move' do
+    let(:towers) {hanoi.towers = [[3,2],[],[1]]}
+    it 'moves a disk' do
+      hanoi.move(0,1)
+      expect(hanoi.towers).to eq([[3],[2],[1]])
+    end
+    
+    it 'raises error if start disk is bigger than end disk' do
+      expect {hanoi.move(1,2)}.to raise_error()
+    end
+    
+  end
+  
+  describe 'Hanoi#won?' do
+    let (:towers) {hanoi.towers = [[], [], [3,2,1]]}
+    it 'checks if the game is won' do 
+      expect(hanoi.won?).to be (true)
+    end
+  end
+end
+

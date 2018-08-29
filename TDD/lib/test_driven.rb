@@ -40,6 +40,8 @@ def stock_picker(arr)
       end
     end
   end
-  [buy, sell]
-    
+  [buy, sell]  
+end
+
+class TowersOfHanoi
 end
