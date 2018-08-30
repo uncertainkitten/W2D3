@@ -16,7 +16,7 @@ RSpec.describe "Deck class for poker" do
   describe "Deck#shuffle" do
     it "should shuffle the cards" do
       deck.shuffle
-      expect(deck.cards).not_to eq(Deck.new.cards)
+      expect(deck.cards).not_to eq(Deck.create.cards)
     end
   end
   
